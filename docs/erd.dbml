@@ -3,6 +3,7 @@ Table roles {
   name varchar [unique, not null]
 }
 
+
 Table users {
   id integer [primary key]
   role_id integer [not null]
