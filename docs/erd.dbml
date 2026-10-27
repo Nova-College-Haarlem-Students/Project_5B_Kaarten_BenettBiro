@@ -1,0 +1,60 @@
+Table roles {
+  id integer [primary key]
+  name varchar [unique, not null]
+}
+
+Table users {
+  id integer [primary key]
+  role_id integer [not null]
+  naam varchar [not null]
+  email varchar [unique, not null]
+  wachtwoord varchar [not null]
+  telefoonnummer varchar [null]
+}
+
+Table Soort_plek {
+  soort_id integer [primary key]
+  naam varchar [not null]
+}
+
+Table Camping {
+  Camping_id integer [primary key]
+  soort_id integer [not null]
+  nummer integer [not null]
+  Grootte double [not null]
+  Is_stroom bool  [not null]
+  Aan_water bool  [not null]
+  Foto_Url varchar  [not null]
+  Max_personen integer  [not null]
+  prijs decimal  [not null]
+  actief bool  [not null]
+}
+
+Table Reservering {
+  Reservering_id integer [primary key]
+  user_id integer [not null]
+  Camping_id integer [not null]
+  aankomstdatum date
+  vertrekdatum date
+  aantal_personen integer
+  opmerking varchar [null]
+  kenteken varchar [null]
+  totaalprijs decimal
+}
+
+Table Wijziging {
+  Wijziging_id integer [primary key]
+  user_id integer [not null]
+  Camping_id integer [not null]
+  tijdstip datetime
+  soort_wijziging varchar
+  oude_waarde varchar
+  nieuwe_waarde varchar
+}
+
+Ref: users.role_id > roles.id
+Ref: Camping.soort_id > Soort_plek.soort_id
+Ref: Reservering.user_id > users.id
+Ref: Reservering.Camping_id > Camping.Camping_id
+Ref: Wijziging.user_id > users.id
+Ref: Wijziging.Camping_id > Camping.Camping_id
