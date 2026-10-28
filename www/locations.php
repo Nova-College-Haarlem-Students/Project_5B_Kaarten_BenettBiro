@@ -3,10 +3,10 @@
 require 'database.php';
 
 
-$type = $_GET['type'] ?? '';
-$electricity = $_GET['electricity'] ?? '';
-$sort = $_GET['sort'] ?? '';
-$zoekterm = $_GET['zoekterm'] ?? '';
+$type = $_POST['type'] ?? '';
+$electricity = $_POST['electricity'] ?? '';
+$sort = $_POST['sort'] ?? '';
+$zoekterm = $_POST['zoekterm'] ?? '';
 
 // Plekken ophalen, met filters
 $sql = "SELECT * FROM locations WHERE is_active = 1";
@@ -52,7 +52,7 @@ require 'header.php';
 ?>
 
 <main>
-    <form method="get" action="locations.php" class="filter-form">
+    <form method="post" action="locations.php" class="filter-form">
         <label>
             Zoeken
             <input type="text" name="zoekterm" value="<?php echo htmlspecialchars($zoekterm) ?>"

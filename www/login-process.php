@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
             if ($dbuser['role_id'] == 2 || $dbuser['role_id'] == 3) {
                 header('Location: dashboard.php');
             } else {
-                header('Location: index.php');
+                header('Location: Guest_dashboard.php');
             }
             exit;
         } else {

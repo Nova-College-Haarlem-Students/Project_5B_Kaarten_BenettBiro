@@ -2,11 +2,11 @@
 include 'database.php';
 
 
-$types = $_GET['type'] ?? '';
-$sizes = $_GET['size'] ?? '';
-$electricity = $_GET['electricity'] ?? '';
-$water = $_GET['water'] ?? '';
-$zoekterm = $_GET['zoekterm'] ?? '';
+$types = $_POST['type'] ?? '';
+$sizes = $_POST['size'] ?? '';
+$electricity = $_POST['electricity'] ?? '';
+$water = $_POST['water'] ?? '';
+$zoekterm = $_POST['zoekterm'] ?? '';
 
 $sql = "SELECT * FROM locations WHERE is_active = 1";
 $params = [];

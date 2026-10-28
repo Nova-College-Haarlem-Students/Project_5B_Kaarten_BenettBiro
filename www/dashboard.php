@@ -50,7 +50,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <a href="Logged_in_MainPage.php?id=<?php echo $user['id']; ?>" class="btn-blue">
                     Hoofdpagina
                 </a>
-                <a href="uitloggen.php?logout=1" class="btn-red">Uitloggen</a>
+                <a href="logout.php?logout=1" class="btn-red">Uitloggen</a>
             </div>
         </div>
     </nav>
