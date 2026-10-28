@@ -493,3 +493,998 @@ nav a.btn-danger:hover {
     --schaduw: 0 4px 14px rgba(15, 23, 42, 0.1);
 }
 
+/* ===== Basis ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f3f6f1;
+    color: #2b3a2f;
+    line-height: 1.5;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+/* ===== Header en navigatie ===== */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 16px auto 0;
+    padding: 12px 24px;
+    background: #ffffff;
+    color: #2b3a2f;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2f6b3f;
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    padding: 8px 14px;
+    color: #2b3a2f;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+    background: #eef3ec;
+    color: #2f6b3f;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    padding-top: 8px; /* geen gat, zodat het menu open blijft bij hoveren */
+    z-index: 10;
+}
+
+.dropdown-content::before {
+    content: "";
+    position: absolute;
+    inset: 8px 0 0 0;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.dropdown-content a {
+    position: relative;
+    margin: 4px;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+    display: block;
+}
+
+/* Knoppen */
+nav a.btn {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+nav a.btn-success {
+    background: #2f6b3f;
+}
+
+nav a.btn-success:hover {
+    background: #245230;
+    color: #ffffff;
+}
+
+nav a.btn-danger {
+    background: #b23a3a;
+}
+
+nav a.btn-danger:hover {
+    background: #8f2d2d;
+    color: #ffffff;
+}
+
+/* ===== Filterformulier ===== */
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 16px 24px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.filter-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #5a6b5e;
+}
+
+.filter-form input,
+.filter-form select {
+    min-width: 160px;
+    padding: 8px 10px;
+    font: inherit;
+    color: #2b3a2f;
+    background: #ffffff;
+    border: 1px solid #cdd8c9;
+    border-radius: 8px;
+}
+
+.filter-form button {
+    padding: 9px 20px;
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background: #2f6b3f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.filter-form button:hover {
+    background: #245230;
+}
+
+/* ===== Grid met plekken ===== */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+/* ===== Kaart per plek ===== */
+.product {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.product img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    background: #dfe6dc;
+}
+
+.product h3 {
+    margin: 0;
+    padding: 0 16px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.product h3:first-of-type {
+    padding-top: 16px;
+    font-size: 1.1rem;
+    color: #2f6b3f;
+}
+
+.product h3 + h3 {
+    padding-top: 4px;
+    font-weight: 400;
+    color: #5a6b5e;
+}
+
+.product p {
+    margin: 12px 0 0;
+    padding: 0 16px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2b3a2f;
+}
+
+/* ===== Knop ===== */
+.product a {
+    display: block;
+    margin: 16px;
+    margin-top: auto;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: #ffffff;
+    background: #2f6b3f;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.product p + a {
+    margin-top: 16px;
+}
+
+.product a:hover {
+    background: #245230;
+}
+
+/* ===== Detailpagina ===== */
+.product-detail,
+.container > p {
+    grid-column: 1 / -1;
+}
+
+.product-detail {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.product-detail .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 24px;
+}
+
+.product-detail .col {
+    flex: 1 1 320px;
+}
+
+.product-detail img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    background: #dfe6dc;
+}
+
+.product-detail h3 {
+    margin: 0 0 16px;
+    font-size: 1.6rem;
+    color: #2f6b3f;
+}
+
+.product-detail p {
+    margin: 0 0 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e4eae1;
+    font-size: 1.05rem;
+}
+
+.product-detail p:last-child {
+    border-bottom: none;
+    margin-top: 12px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.container > p {
+    padding: 24px;
+    text-align: center;
+    color: #5a6b5e;
+}
+
+/* ===== Mijn gegevens (guestboard) ===== */
+.profile-card {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 32px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card h2 {
+    margin: 0 0 4px;
+    color: #2f6b3f;
+}
+
+.profile-intro {
+    margin: 0 0 24px;
+    color: #5a6b5e;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.profile-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #5a6b5e;
+}
+
+.profile-form input {
+    padding: 10px 12px;
+    font: inherit;
+    color: #2b3a2f;
+    border: 1px solid #cdd8c9;
+    border-radius: 8px;
+}
+
+.profile-form input:focus {
+    outline: 2px solid #2f6b3f;
+    outline-offset: 1px;
+}
+
+.profile-form button {
+    padding: 11px 20px;
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background: #2f6b3f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.profile-form button:hover {
+    background: #245230;
+}
+
+.form-note {
+    margin: 20px 0 0;
+    text-align: center;
+    color: #5a6b5e;
+}
+
+.form-note a {
+    font-weight: 600;
+    color: #2f6b3f;
+}
+
+.alert {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.alert-success {
+    color: #1f5130;
+    background: #e1f1e5;
+}
+
+.alert-error {
+    color: #7a2626;
+    background: #f8e1e1;
+}
+
+/* ===== Foutpagina's (404 / 500) ===== */
+.error-page {
+    grid-column: 1 / -1;
+    padding: 56px 24px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.error-page h1 {
+    margin: 0;
+    font-size: 5rem;
+    line-height: 1;
+    color: #2f6b3f;
+}
+
+.error-page h2 {
+    margin: 8px 0 12px;
+}
+
+.error-page p {
+    margin: 0 0 24px;
+    color: #5a6b5e;
+}
+
+.error-page a {
+    display: inline-block;
+    padding: 10px 24px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    background: #2f6b3f;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.error-page a:hover {
+    background: #245230;
+}
+
+/* ===== Kleine schermen ===== */
+@media (max-width: 480px) {
+    main {
+        padding: 16px 12px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .product-detail .row {
+        padding: 16px;
+        gap: 16px;
+    }
+}
+
+/* ===== Basis ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f3f6f1;
+    color: #2b3a2f;
+    line-height: 1.5;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+/* ===== Header en navigatie ===== */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 16px auto 0;
+    padding: 12px 24px;
+    background: #ffffff;
+    color: #2b3a2f;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2f6b3f;
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    padding: 8px 14px;
+    color: #2b3a2f;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+    background: #eef3ec;
+    color: #2f6b3f;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    padding-top: 8px; /* geen gat, zodat het menu open blijft bij hoveren */
+    z-index: 10;
+}
+
+.dropdown-content::before {
+    content: "";
+    position: absolute;
+    inset: 8px 0 0 0;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.dropdown-content a {
+    position: relative;
+    margin: 4px;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+    display: block;
+}
+
+/* Knoppen */
+nav a.btn {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+nav a.btn-success {
+    background: #2f6b3f;
+}
+
+nav a.btn-success:hover {
+    background: #245230;
+    color: #ffffff;
+}
+
+nav a.btn-danger {
+    background: #b23a3a;
+}
+
+nav a.btn-danger:hover {
+    background: #8f2d2d;
+    color: #ffffff;
+}
+
+/* ===== Filterformulier ===== */
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 16px 24px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.filter-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #5a6b5e;
+}
+
+.filter-form input,
+.filter-form select {
+    min-width: 160px;
+    padding: 8px 10px;
+    font: inherit;
+    color: #2b3a2f;
+    background: #ffffff;
+    border: 1px solid #cdd8c9;
+    border-radius: 8px;
+}
+
+.filter-form button {
+    padding: 9px 20px;
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background: #2f6b3f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.filter-form button:hover {
+    background: #245230;
+}
+
+/* ===== Grid met plekken ===== */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+/* ===== Kaart per plek ===== */
+.product {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.product img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    background: #dfe6dc;
+}
+
+.product h3 {
+    margin: 0;
+    padding: 0 16px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.product h3:first-of-type {
+    padding-top: 16px;
+    font-size: 1.1rem;
+    color: #2f6b3f;
+}
+
+.product h3 + h3 {
+    padding-top: 4px;
+    font-weight: 400;
+    color: #5a6b5e;
+}
+
+.product p {
+    margin: 12px 0 0;
+    padding: 0 16px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2b3a2f;
+}
+
+/* ===== Knop ===== */
+.product a {
+    display: block;
+    margin: 16px;
+    margin-top: auto;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: #ffffff;
+    background: #2f6b3f;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.product p + a {
+    margin-top: 16px;
+}
+
+.product a:hover {
+    background: #245230;
+}
+
+/* ===== Detailpagina ===== */
+.product-detail,
+.container > p {
+    grid-column: 1 / -1;
+}
+
+.product-detail {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.product-detail .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 24px;
+}
+
+.product-detail .col {
+    flex: 1 1 320px;
+}
+
+.product-detail img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    background: #dfe6dc;
+}
+
+.product-detail h3 {
+    margin: 0 0 16px;
+    font-size: 1.6rem;
+    color: #2f6b3f;
+}
+
+.product-detail p {
+    margin: 0 0 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e4eae1;
+    font-size: 1.05rem;
+}
+
+.product-detail p:last-child {
+    border-bottom: none;
+    margin-top: 12px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.container > p {
+    padding: 24px;
+    text-align: center;
+    color: #5a6b5e;
+}
+
+/* ===== Mijn gegevens (guestboard) ===== */
+.profile-card {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 32px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card h2 {
+    margin: 0 0 4px;
+    color: #2f6b3f;
+}
+
+.profile-intro {
+    margin: 0 0 24px;
+    color: #5a6b5e;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.profile-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #5a6b5e;
+}
+
+.profile-form input {
+    padding: 10px 12px;
+    font: inherit;
+    color: #2b3a2f;
+    border: 1px solid #cdd8c9;
+    border-radius: 8px;
+}
+
+.profile-form input:focus {
+    outline: 2px solid #2f6b3f;
+    outline-offset: 1px;
+}
+
+.profile-form button {
+    padding: 11px 20px;
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background: #2f6b3f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.profile-form button:hover {
+    background: #245230;
+}
+
+.form-note {
+    margin: 20px 0 0;
+    text-align: center;
+    color: #5a6b5e;
+}
+
+.form-note a {
+    font-weight: 600;
+    color: #2f6b3f;
+}
+
+.alert {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.alert-success {
+    color: #1f5130;
+    background: #e1f1e5;
+}
+
+.alert-error {
+    color: #7a2626;
+    background: #f8e1e1;
+}
+
+/* ===== Reserveren (detailpagina) ===== */
+.reserve-box {
+    padding: 24px;
+    border-top: 1px solid #e4eae1;
+}
+
+.reserve-box h4 {
+    margin: 0 0 16px;
+    font-size: 1.3rem;
+    color: #2f6b3f;
+}
+
+.reserve-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.reserve-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #5a6b5e;
+}
+
+.reserve-form input {
+    padding: 10px 12px;
+    font: inherit;
+    color: #2b3a2f;
+    border: 1px solid #cdd8c9;
+    border-radius: 8px;
+}
+
+.reserve-form input:focus {
+    outline: 2px solid #2f6b3f;
+    outline-offset: 1px;
+}
+
+.reserve-form .reserve-wide {
+    grid-column: 1 / -1;
+}
+
+.reserve-form button {
+    padding: 12px 20px;
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background: #2f6b3f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.reserve-form button:hover {
+    background: #245230;
+}
+
+.reserve-form button:disabled {
+    background: #9db8a5;
+    cursor: wait;
+}
+
+.reserve-login {
+    color: #5a6b5e;
+}
+
+.reserve-login a {
+    font-weight: 600;
+    color: #2f6b3f;
+}
+
+/* ===== Foutpagina's (404 / 500) ===== */
+.error-page {
+    grid-column: 1 / -1;
+    padding: 56px 24px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.error-page h1 {
+    margin: 0;
+    font-size: 5rem;
+    line-height: 1;
+    color: #2f6b3f;
+}
+
+.error-page h2 {
+    margin: 8px 0 12px;
+}
+
+.error-page p {
+    margin: 0 0 24px;
+    color: #5a6b5e;
+}
+
+.error-page a {
+    display: inline-block;
+    padding: 10px 24px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    background: #2f6b3f;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.error-page a:hover {
+    background: #245230;
+}
+
+/* ===== Kleine schermen ===== */
+@media (max-width: 480px) {
+    main {
+        padding: 16px 12px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .product-detail .row {
+        padding: 16px;
+        gap: 16px;
+    }
+}

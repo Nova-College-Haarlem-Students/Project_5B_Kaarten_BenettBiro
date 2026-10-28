@@ -38,7 +38,7 @@
 
             <p class="login-footer">
                 Nog geen account?
-                <a href="registreren.php">Registreer hier</a>
+                <a href="register.php">Registreer hier</a>
             </p>
 
         </div>

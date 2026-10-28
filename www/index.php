@@ -12,17 +12,6 @@
 <body>
 
 
-    <nav>
-        <html>
-
-        <body>
-        </body>
-
-        </html>
-        </div>
-        </div>
-    </nav>
-
     <div>
         <div class="hero">
             <div class="hero-inner">

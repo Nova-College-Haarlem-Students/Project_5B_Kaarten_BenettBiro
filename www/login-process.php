@@ -24,10 +24,15 @@ if (isset($_POST['submit'])) {
             $_SESSION['name'] = $dbuser['name'];
             $_SESSION['role_id'] = $dbuser['role_id'];
 
+            // Aantal reserveringen van deze gebruiker ophalen voor de header
+            $stmt = $conn->prepare("SELECT COUNT(*) FROM reservations WHERE user_id = :user_id");
+            $stmt->execute(['user_id' => $dbuser['id']]);
+            $_SESSION['reservation_count'] = (int) $stmt->fetchColumn();
+
             if ($dbuser['role_id'] == 2 || $dbuser['role_id'] == 3) {
                 header('Location: dashboard.php');
             } else {
-                header('Location: Guest_dashboard.php');
+                header('Location: guest_dashboard.php');
             }
             exit;
         } else {

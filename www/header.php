@@ -15,10 +15,14 @@
             <ul>
                 <li><a href="index.php">Home</a></li>
 
-               
-                <?php if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1): ?>
-                    <li><a href="my_reservations.php">Mijn reserveringen</a></li>
-                <?php endif; ?>
+
+                <li>
+                    <a href="my_reservations.php">
+                        Mijn reserveringen
+                        <span class="count-badge"
+                            id="header-reservation-count"><?php echo $_SESSION['reservation_count'] ?? 0 ?></span>
+                    </a>
+                </li>
 
                 <?php if (isset($_SESSION['role_id']) && ($_SESSION['role_id'] == 2 || $_SESSION['role_id'] == 3)): ?>
                     <li><a href="dashboard.php">Dashboard</a></li>
@@ -32,8 +36,9 @@
                     <li class="dropdown">
                         <a href="#">Reserveringen</a>
                         <div class="dropdown-content">
-                            <a href="reservations_index.php">Alle reserveringen</a>
+                            <a href="reserve.php">Alle reserveringen</a>
                             <a href="locations_free.php">Niet gereserveerde plekken</a>
+                            <a href="index.php">Home</a>
                         </div>
                     </li>
                     <li><a href="changes_index.php">Wijzigingen</a></li>
