@@ -1,0 +1,238 @@
+/* ===== Basis ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f3f6f1;
+    color: #2b3a2f;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ===== Navigatiebalk ===== */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.nav-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2f6b3f;
+}
+
+.nav-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+}
+
+.timer-label {
+    font-size: 0.95rem;
+    color: #5a6b5e;
+}
+
+.timer {
+    display: inline-block;
+    min-width: 48px;
+    font-family: Consolas, monospace;
+    font-weight: 700;
+    color: #2f6b3f;
+}
+
+/* ===== Knoppen ===== */
+.btn-blue,
+.btn-red {
+    display: inline-block;
+    padding: 8px 18px;
+    font-weight: 600;
+    color: #ffffff;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.btn-blue {
+    background: #2f6b3f;
+}
+
+.btn-blue:hover {
+    background: #245230;
+}
+
+.btn-red {
+    background: #b23a3a;
+}
+
+.btn-red:hover {
+    background: #8f2d2d;
+}
+
+/* ===== Hero ===== */
+.hero {
+    padding: 56px 24px 96px;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, #2f6b3f, #4a9460);
+}
+
+.hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    margin: 0 0 8px;
+    font-size: 2.2rem;
+}
+
+.hero p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* ===== Inhoud ===== */
+.main-content {
+    flex: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: -56px auto 48px;
+    padding: 0 16px;
+}
+
+.detail-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.detail-content {
+    padding: 32px;
+}
+
+.detail-title {
+    margin: 0 0 4px;
+    font-size: 1.6rem;
+    color: #2f6b3f;
+}
+
+.detail-type {
+    margin: 0 0 24px;
+    color: #5a6b5e;
+}
+
+.detail-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.detail-box {
+    padding: 16px;
+    background: #eef3ec;
+    border-radius: 10px;
+}
+
+.detail-box strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #5a6b5e;
+}
+
+.detail-box p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+/* ===== Footer ===== */
+footer {
+    background: #1f3a28;
+    color: #dfe8dc;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+footer h4 {
+    margin: 0 0 8px;
+    color: #ffffff;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links a {
+    color: #dfe8dc;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* ===== Kleine schermen ===== */
+@media (max-width: 700px) {
+    .nav-inner {
+        padding: 12px 16px;
+    }
+
+    .hero {
+        padding: 40px 16px 80px;
+    }
+
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .detail-content {
+        padding: 20px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+}

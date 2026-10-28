@@ -14,13 +14,8 @@
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <form method="GET">
-                    <input type="text" name="zoekterm"
-                        value="<?php echo isset($_GET['zoekterm']) ? $_GET['zoekterm'] : ''; ?>"
-                        placeholder="Zoek een boek...">
-                    <?php include 'filter.php'; ?>
-                    <button type="submit" class="btn-blue">Filter</button>
-                </form>
+
+               
                 <?php if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1): ?>
                     <li><a href="my_reservations.php">Mijn reserveringen</a></li>
                 <?php endif; ?>

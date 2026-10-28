@@ -1,4 +1,5 @@
 <?php
+require 'database.php';
 
 $sql_size = "SELECT DISTINCT size_m2 FROM locations WHERE size_m2 IS NOT NULL";
 $sql_electricity = "SELECT DISTINCT has_electricity FROM locations WHERE has_electricity IS NOT NULL";
@@ -7,6 +8,7 @@ $sql_water= "SELECT DISTINCT near_water FROM locations WHERE near_water IS NOT N
 $size_m2 = $conn->query($sql_size)->fetchAll(PDO::FETCH_ASSOC);
 $has_electricity = $conn->query($sql_electricity)->fetchAll(PDO::FETCH_ASSOC);
 $near_water = $conn->query($sql_water)->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <select name="size">
@@ -32,7 +34,7 @@ $near_water = $conn->query($sql_water)->fetchAll(PDO::FETCH_ASSOC);
     <option value="">-- Is it near water --</option>
     <?php foreach ($near_water as $Near_water): ?>
         <option value="<?php echo htmlspecialchars($Near_water['near_water']); ?>" <?php echo (($_GET['near_water'] ?? '') == $Near_water['near_water']) ? 'selected' : ''; ?>>
-            <?php echo htmlspecialchars($Near_water['near_water']); ?> pagina's
+            <?php echo htmlspecialchars($Near_water['near_water']); ?> 
         </option>
     <?php endforeach; ?>
 </select>

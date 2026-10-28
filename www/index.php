@@ -1,37 +1,45 @@
-<?php
-session_start();
-require 'database.php';
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camping</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
 
 
-$stmt = $conn->prepare("SELECT * FROM locations");
-$stmt->execute();
-$locations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    <nav>
+        <html>
 
+        <body>
+        </body>
 
+        </html>
+        </div>
+        </div>
+    </nav>
 
-require 'header.php';
-?>
-
-
-<main>
-    <div class="container">
-
-      
-
-        <?php foreach ($locations as $location): ?>
-            <div class="product">
-                <img src="<?php echo isset($tlocation['photo_url']) ? 'images/' . htmlspecialchars($location['tool_image']) : 'https://placehold.co/200' ?>"
-                    alt="<?php echo htmlspecialchars($location['number']) ?>">
-                <h3> location number: <?php echo htmlspecialchars($location['id']) ?></h3>
-                <h3> maximum guests: <?php echo htmlspecialchars($location['max_guests']) ?></h3>
-                <p> per night € <?php echo number_format($location['price_per_night']) ?></p>
-                <a href="Location_detail.php?id=<?php echo urlencode($location['id']) ?>">Bekijk</a>
+    <div>
+        <div class="hero">
+            <div class="hero-inner">
+                <h1></h1>
+                <p></p>
             </div>
+        </div>
 
-        <?php endforeach; ?>
+        <div class="main-content">
 
+            <?php include 'locations.php'; ?>
+        </div>
+
+        <footer>
+           
+        </footer>
     </div>
 
-</main>
+</body>
 
-<?php require 'footer.php' ?>
+</html>
