@@ -1,5 +1,6 @@
 <?php
-session_start();
+require 'data_dashboard.php';
+
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: inloggen.php');
@@ -11,7 +12,7 @@ if (isset($_SESSION['rol_id'])) {
     exit;
 }
 
-if (!isset( $_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: dashboard.php?id=' . $_SESSION['user_id']);
     exit;
 }
@@ -47,9 +48,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <span class="timer-label">
                     Tijd op pagina: <span id="timer" class="timer">00:00</span>
                 </span>
-                <a href="Logged_in_MainPage.php?id=<?php echo $user['id']; ?>" class="btn-blue">
-                    Hoofdpagina
-                </a>
+                <a href="index.php" class="btn-blue">Home</a>
                 <a href="logout.php?logout=1" class="btn-red">Uitloggen</a>
             </div>
         </div>
@@ -69,7 +68,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <p class="detail-type">Hier vind je een overzicht van jouw accountinformatie.</p>
 
                 <div class="detail-info">
-                
+
                     <div class="detail-box">
                         <strong>Naam</strong>
                         <p><?php echo $user['name']; ?></p>
@@ -84,6 +83,27 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     </div>
 
                 </div>
+            </div>
+        </div>
+        <div class="detail-info">
+
+            <div class="detail-box">
+                <strong>total locations</strong>
+                <p>
+                    <?php echo $total_locations; ?>
+                </p>
+            </div>
+            <div class="detail-box">
+                <strong>total members</strong>
+                <p>
+                    <?php echo $total_members; ?>
+                </p>
+            </div>
+            <div class="detail-box">
+                <strong>total employees</strong>
+                <p>
+                    <?php echo $total_employees; ?>
+                </p>
             </div>
         </div>
     </main>
