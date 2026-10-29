@@ -76,7 +76,7 @@ require 'header.php';
                                 <td>€ <?php echo number_format($location['price_per_night'], 2, ',', '.') ?></td>
                                 <td><?php echo date('d-m-Y H:i', strtotime($location['deleted_at'])) ?></td>
                                 <td>
-                                    <form method="post" action="Restore_locations_process.php">
+                                    <form method="post" action="restore_locations.php">
                                         <input type="hidden" name="id" value="<?php echo (int) $location['id'] ?>">
                                         <button type="submit" name="restore">Herstellen</button>
                                     </form>

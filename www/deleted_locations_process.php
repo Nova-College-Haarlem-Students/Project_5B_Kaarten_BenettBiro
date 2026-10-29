@@ -19,7 +19,7 @@ if (!isset($_POST['delete'])) {
     exit;
 }
 
-$id      = (int) ($_POST['id'] ?? 0);
+$id = (int) ($_POST['id'] ?? 0);
 $user_id = (int) $_SESSION['user_id'];
 
 try {
@@ -36,8 +36,15 @@ try {
         exit;
     }
 
-    // Soft delete: de rij blijft bestaan (reserveringen verwijzen ernaar), alleen deleted_at wordt gevuld
-    $stmt = $conn->prepare("UPDATE locations SET deleted_at = NOW() WHERE id = :id");
+    // Soft delete: de rij blijft bestaan (reserveringen verwijzen ernaar),
+// maar de locatie wordt inactief gemaakt.
+    $stmt = $conn->prepare(
+        "UPDATE locations
+     SET deleted_at = NOW(),
+         is_active = 0
+     WHERE id = :id"
+    );
+
     $stmt->execute(['id' => $id]);
 
     // Logboek

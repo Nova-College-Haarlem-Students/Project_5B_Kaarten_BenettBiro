@@ -1,4 +1,3 @@
-```php
 <?php
 require 'database.php';
 

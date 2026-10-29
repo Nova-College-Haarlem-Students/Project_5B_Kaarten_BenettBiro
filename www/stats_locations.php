@@ -93,8 +93,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                             <a href="Update_location.php?id=<?php echo (int) $row['id'] ?>">Bewerken</a>
 
                                             
-                                                <form method="post" action="users_delete_process.php" style="display:inline"
-                                                    onsubmit="return confirm('Deze gebruiker verwijderen?')">
+                                                <form method="post" action="deleted_locations_process.php" style="display:inline"
+                                                    onsubmit="return confirm('Deze location verwijderen?')">
                                                     <input type="hidden" name="id" value="<?php echo (int) $row['id'] ?>">
                                                     <button type="submit" name="delete">Verwijderen</button>
                                                 </form>
