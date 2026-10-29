@@ -50,6 +50,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </span>
                 <a href="index.php" class="btn-blue">Home</a>
                 <a href="logout.php?logout=1" class="btn-red">Uitloggen</a>
+                <a href="stats_dashboard.php" class="btn-blue">Stats</a>
+                <a href="stats_users.php" class="btn-blue"> Users stats</a>
             </div>
         </div>
     </nav>
@@ -86,26 +88,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             </div>
         </div>
         <div class="detail-info">
-
-            <div class="detail-box">
-                <strong>total locations</strong>
-                <p>
-                    <?php echo $total_locations; ?>
-                </p>
-            </div>
-            <div class="detail-box">
-                <strong>total members</strong>
-                <p>
-                    <?php echo $total_members; ?>
-                </p>
-            </div>
-            <div class="detail-box">
-                <strong>total employees</strong>
-                <p>
-                    <?php echo $total_employees; ?>
-                </p>
-            </div>
-        </div>
     </main>
 
     <footer>

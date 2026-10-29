@@ -50,6 +50,7 @@
                         <div class="dropdown-content">
                             <a href="users_index.php">Bekijken</a>
                             <a href="users_create.php">Toevoegen</a>
+                           
                         </div>
                     </li>
                 <?php endif; ?>
@@ -58,6 +59,7 @@
                     <li><a href="logout.php" class="btn btn-danger">Uitloggen</a></li>
                 <?php else: ?>
                     <li><a href="register.php">Account aanmaken</a></li>
+                    <li><a href="deleted_locations.php">Verwijderde plekken</a></li>
                     <li><a href="login.php" class="btn btn-success">Inloggen</a></li>
                 <?php endif; ?>
             </ul>

@@ -62,13 +62,7 @@ if (isset($_POST['submit'])) {
                 'phone'    => $phone === '' ? null : $phone,
             ]);
 
-            // Meteen inloggen
-            session_regenerate_id(true);
-            $_SESSION['user_id'] = (int) $conn->lastInsertId();
-            $_SESSION['role_id'] = 1;
-            $_SESSION['name']    = $name;
-            $_SESSION['email']   = $email;
-
+         
             header('Location: index.php');
             exit;
         }

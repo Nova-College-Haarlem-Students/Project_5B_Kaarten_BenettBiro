@@ -2,7 +2,7 @@
 session_start();
 require 'database.php';
 
-// Alleen voor ingelogde gebruikers
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -36,7 +36,7 @@ try {
     exit;
 }
 
-// Teller in de header gelijkzetten met wat er echt in de database staat
+
 $_SESSION['reservation_count'] = count($reservations);
 
 require 'header.php';
