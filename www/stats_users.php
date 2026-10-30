@@ -39,7 +39,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     <nav>
         <div class="nav-inner">
-            <div class="nav-logo">Sports</div>
+            <div class="nav-logo">Camping</div>
             <div class="nav-right">
                 <span class="timer-label">
                     Welkom, <?php echo $user['name']; ?>
@@ -114,12 +114,12 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="footer-inner">
             <div>
                 <h4>Over Ons</h4>
-                <p>Wij zijn een sportclub die zich richt op het bevorderen van een gezonde levensstijl.</p>
+                <p></p>
             </div>
             <div>
                 <h4>Snelle Links</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Workouts</a></li>
+                   
                 </ul>
             </div>
             <div></div>

@@ -46,6 +46,7 @@ if ($departureDate <= $arrivalDate) {
     respond(422, false, 'De vertrekdatum moet na de aankomstdatum liggen.');
 }
 
+
 if (strlen($remark) > 255) {
     respond(422, false, 'Je opmerking is te lang (maximaal 255 tekens).');
 }
@@ -55,6 +56,7 @@ if (strlen($licensePlate) > 20) {
 }
 
 $nights = $arrivalDate->diff($departureDate)->days;
+
 
 try {
     $conn->beginTransaction();

@@ -37,5 +37,5 @@ $fetch_users = $conn->query(
 
 // Alle gebruikers met hun rol (fetchAll, niet fetch)
 $fetch_locations = $conn->query(
-    "SELECT * FROM locations "
+    "SELECT * FROM locations"
 )->fetchAll(PDO::FETCH_ASSOC);

@@ -42,7 +42,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="nav-logo">Sports</div>
             <div class="nav-right">
                 <span class="timer-label">
-                Welkom, <?php echo $user['name']; ?>
+                    Welkom, <?php echo $user['name']; ?>
                 </span>
                 <span class="timer-label">
                     Tijd op pagina: <span id="timer" class="timer">00:00</span>
@@ -69,56 +69,51 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <div class="detail-info">
 
                     <div class="detail-box">
-                    <strong>total locations</strong>
-                    <p>
-                        <?php echo $total_locations; ?>
-                    </p>
-                </div>
-                <div class="detail-box">
-                    <strong>total members</strong>
-                    <p>
-                        <?php echo $total_members; ?>
-                    </p>
-                </div>
-                <div class="detail-box">
-                    <strong>total employees</strong>
-                    <p>
-                        <?php echo $total_employees; ?>
-                    </p>
-                </div>
-                <div class="detail-box">
-                    <strong>total spent on every reservation</strong>
-                    <p>
-                        <?php echo $total_profit; ?>
-                    </p>
-                </div>
-                <div class="detail-box">
-                    <strong>average spent per reservation</strong>
-                    <p>
-                        <?php echo $fetch_avg_price; ?>
-                    </p>
-                </div>
-                <div class="detail-box">
-                    <strong>Most expensive reservation</strong>
-                    <p>
-                        <?php echo $fetch_max_price; ?>
-                    </p>
-                </div>
-                <div class="detail-box">
-                    <strong>least expensive reservation</strong>
-                    <p>
-                        <?php echo $fetch_min_price; ?>
-                    </p>
-                </div>
-                   <div class="detail-box">
-                    <strong>least expensive reservation</strong>
-                    <p>
-                        <?php echo $fetch_min_price; ?>
-                    </p>
-                </div>
-            </div>
+                        <strong>total locations</strong>
+                        <p>
+                            <?php echo $total_locations; ?>
+                        </p>
+                    </div>
+                    <div class="detail-box">
+                        <strong>total members</strong>
+                        <p>
+                            <?php echo $total_members; ?>
+                        </p>
+                    </div>
+                    <div class="detail-box">
+                        <strong>total employees</strong>
+                        <p>
+                            <?php echo $total_employees; ?>
+                        </p>
+                    </div>
+                    <div class="detail-box">
+                        <strong>total spent on every reservation</strong>
+                        <p>
+                            <?php echo $total_profit; ?>
+                        </p>
+                    </div>
+                    <div class="detail-box">
+                        <strong>average spent per reservation</strong>
+                        <p>
+                            <?php echo $fetch_avg_price; ?>
+                        </p>
+                    </div>
+                    <div class="detail-box">
+                        <strong>Most expensive reservation</strong>
+                        <p>
+                            <?php echo $fetch_max_price; ?>
+                        </p>
+                    </div>
+                    <div class="detail-box">
+                        <strong>least expensive reservation</strong>
+                        <p>
+                            <?php echo $fetch_min_price; ?>
+                        </p>
+                    </div>
 
-        </div>
+                </div>
+
+            </div>
         </div>
         </div>
         <div class="detail-info">
@@ -130,12 +125,12 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="footer-inner">
             <div>
                 <h4>Over Ons</h4>
-                <p>Wij zijn een sportclub die zich richt op het bevorderen van een gezonde levensstijl.</p>
+                <p></p>
             </div>
             <div>
                 <h4>Snelle Links</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Workouts</a></li>
+                  
                 </ul>
             </div>
             <div></div>
