@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     respond(405, false, 'Ongeldig verzoek.');
 }
 
-// Alleen ingelogde gebruikers (dit controleren we hier op de server, niet alleen in de pagina)
 if (!isset($_SESSION['user_id'])) {
     respond(401, false, 'Je moet ingelogd zijn om te reserveren.');
 }
@@ -29,7 +28,7 @@ $guests       = (int) ($_POST['guests'] ?? 0);
 $remark       = trim($_POST['remark'] ?? '');
 $licensePlate = trim($_POST['license_plate'] ?? '');
 
-// --- Datums controleren ---
+
 $arrivalDate   = DateTime::createFromFormat('!Y-m-d', $arrival);
 $departureDate = DateTime::createFromFormat('!Y-m-d', $departure);
 
@@ -61,7 +60,7 @@ $nights = $arrivalDate->diff($departureDate)->days;
 try {
     $conn->beginTransaction();
 
-    // De plek vergrendelen, zodat twee gasten niet tegelijk dezelfde dagen kunnen boeken
+    
     $stmt = $conn->prepare(
         "SELECT id, max_guests, price_per_night
          FROM locations
@@ -81,7 +80,7 @@ try {
         respond(422, false, 'Het aantal personen moet tussen 1 en ' . $location['max_guests'] . ' liggen.');
     }
 
-    // Overlapt de periode met een bestaande reservering? (vertrekdag = aankomstdag van de volgende mag)
+    
     $stmt = $conn->prepare(
         "SELECT COUNT(*) FROM reservations
          WHERE location_id = :id
@@ -99,7 +98,6 @@ try {
         respond(409, false, 'Deze plek is in die periode al gereserveerd.');
     }
 
-    // De totaalprijs bewaren we in de reservering, zodat latere prijsverhogingen niets veranderen
     $totalPrice = round($nights * $location['price_per_night'], 2);
 
     $stmt = $conn->prepare(
@@ -119,7 +117,7 @@ try {
         'total_price'   => $totalPrice,
     ]);
 
-    // Nieuw aantal reserveringen voor deze plek
+   
     $stmt = $conn->prepare("SELECT COUNT(*) FROM reservations WHERE location_id = :id");
     $stmt->execute(['id' => $locationId]);
     $count = (int) $stmt->fetchColumn();

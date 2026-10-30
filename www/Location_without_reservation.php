@@ -2,7 +2,7 @@
 session_start();
 require 'database.php';
 
-// Alleen ingelogde medewerkers (2) en admins (3)
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -14,8 +14,7 @@ if (!in_array($_SESSION['role_id'] ?? null, [2, 3])) {
 }
 
 try {
-    // LEFT JOIN: alle plekken, ook die zonder reservering.
-    // Waar reservations.id leeg (NULL) is, is er geen reservering gevonden.
+   
     $stmt = $conn->prepare(
         "SELECT locations.id, locations.number, locations.name, locations.size_m2,
                 locations.max_guests, locations.price_per_night,

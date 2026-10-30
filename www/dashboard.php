@@ -53,6 +53,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <a href="stats_dashboard.php" class="btn-blue">Stats</a>
                  <a href="logbook.php" class="btn-blue">logbook</a>
                 <a href="stats_locations.php" class="btn-blue"> location stats</a>
+                 <a href="stats_users.php" class="btn-blue"> Users stats</a>
             </div>
         </div>
     </nav>

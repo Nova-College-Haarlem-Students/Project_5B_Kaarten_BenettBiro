@@ -19,6 +19,7 @@ if (!$location) {
 ?>
 
 <h1>Locatie aanpassen</h1>
+<link rel="stylesheet" href="update.css">
 
 <form method="POST" action="Update_location_process.php">
     <input type="hidden" name="id"

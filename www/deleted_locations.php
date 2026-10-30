@@ -2,7 +2,6 @@
 session_start();
 require 'database.php';
 
-// Alleen ingelogde medewerkers (2) en admins (3)
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -13,13 +12,13 @@ if (!in_array($_SESSION['role_id'] ?? null, [2, 3])) {
     exit;
 }
 
-// Meldingen na het herstellen (uit de sessie, zodat verversen niets opnieuw doet)
+
 $success = $_SESSION['success'] ?? '';
 $error   = $_SESSION['error'] ?? '';
 unset($_SESSION['success'], $_SESSION['error']);
 
 try {
-    // Alleen de verwijderde plekken (deleted_at is gevuld), de laatst verwijderde bovenaan
+    
     $stmt = $conn->prepare(
         "SELECT locations.id, locations.number, locations.name, locations.price_per_night, locations.deleted_at,
                 location_types.name AS type_name

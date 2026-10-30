@@ -56,16 +56,16 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     <section class="hero">
         <div class="hero-inner">
-            <h1>Mijn Dashboard</h1>
-            <p>Beheer hier je persoonlijke gegevens.</p>
+            <h1>Locations-stats</h1>
+            
         </div>
     </section>
 
     <main class="main-content">
         <div class="detail-card">
             <div class="detail-content">
-                <h2 class="detail-title">Mijn Gegevens</h2>
-                <p class="detail-type">Hier vind je een overzicht van jouw accountinformatie.</p>
+                <h2 class="detail-title">information- locations</h2>
+                <p class="detail-type">information about locations are found beneath this text.</p>
 
                 <div class="table-card">
                     <h2>Gebruikers</h2>

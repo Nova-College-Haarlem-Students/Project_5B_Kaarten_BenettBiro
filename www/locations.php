@@ -8,7 +8,7 @@ $electricity = $_POST['electricity'] ?? '';
 $sort = $_POST['sort'] ?? '';
 $zoekterm = $_POST['zoekterm'] ?? '';
 
-// Plekken ophalen, met filters
+
 $sql = "SELECT * FROM locations WHERE is_active = 1";
 $params = [];
 
@@ -28,7 +28,6 @@ if ($zoekterm !== '') {
     $params['zoekterm2'] = "%$zoekterm%";
 }
 
-// Sorteren
 if ($sort === 'price_desc') {
     $sql .= " ORDER BY price_per_night DESC";
 } elseif ($sort === 'size_asc') {
@@ -43,7 +42,7 @@ $stmt = $conn->prepare($sql);
 $stmt->execute($params);
 $locations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Soorten voor het keuzemenu
+
 $stmt = $conn->prepare("SELECT id, name FROM location_types");
 $stmt->execute();
 $location_types = $stmt->fetchAll(PDO::FETCH_ASSOC);

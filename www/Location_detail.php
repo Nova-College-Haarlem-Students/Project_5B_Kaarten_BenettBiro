@@ -19,7 +19,7 @@ try {
     $stmt->execute(['id' => $id]);
     $location = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Aantal reserveringen voor deze plek
+    
     $stmt = $conn->prepare("SELECT COUNT(*) FROM reservations WHERE location_id = :id");
     $stmt->execute(['id' => $id]);
     $reservationCount = (int) $stmt->fetchColumn();
@@ -60,7 +60,7 @@ require 'header.php';
                 </div>
             </div>
 
-            <!-- Reserveren -->
+           
             <div class="reserve-box">
                 <h4>Reserveren</h4>
 
@@ -116,17 +116,17 @@ require 'header.php';
 <script>
     const form = document.getElementById('reserve-form');
 
-    // Het formulier bestaat alleen als je bent ingelogd
+   
     if (form) {
         form.addEventListener('submit', async function (event) {
-            event.preventDefault();   // pagina niet opnieuw laden
+            event.preventDefault();   
 
             const message = document.getElementById('reserve-message');
             const button = form.querySelector('button');
             button.disabled = true;
 
             try {
-                // Alle velden van het formulier als object, verstuurd als JSON
+               
                 const input = Object.fromEntries(new FormData(form));
 
                 const response = await fetch('Add_reservation.php', {
@@ -140,7 +140,7 @@ require 'header.php';
                 message.className = 'alert ' + (data.success ? 'alert-success' : 'alert-error');
 
                 if (data.success) {
-                    // Aantal reserveringen op de pagina bijwerken
+                  
                     document.getElementById('reservation-count').textContent = data.count;
                     form.reset();
                 }

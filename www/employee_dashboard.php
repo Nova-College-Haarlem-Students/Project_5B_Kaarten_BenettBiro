@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: inloggen.php');
+    header('Location: login.php');
     exit;
 }
 
@@ -68,7 +68,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="detail-content">
                 <h2 class="detail-title">Employee Gegevens</h2>
                 <p class="detail-type">Hier vind je een overzicht van jouw accountinformatie.</p>
-
+                <a href="stats_reservations.php" class="btn-blue"> location stats</a>
+                <a href="Location_without_reservation.php" class="btn-blue"> locations without reservation</a>
                 <div class="detail-info">
 
                     <div class="detail-box">
@@ -98,7 +99,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <div>
                 <h4>Snelle Links</h4>
                 <ul class="footer-links">
-                   
+
                 </ul>
             </div>
             <div></div>

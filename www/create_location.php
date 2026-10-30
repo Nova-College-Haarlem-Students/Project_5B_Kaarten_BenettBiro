@@ -2,7 +2,7 @@
 session_start();
 require 'database.php';
 
-// Alleen ingelogde medewerkers (2) en admins (3)
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -26,7 +26,7 @@ $price_per_night = '';
 $is_active = 1;
 
 try {
-    // Soorten voor de keuzelijst
+   
     $stmt = $conn->prepare("SELECT id, name FROM location_types ORDER BY name");
     $stmt->execute();
     $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
     }
 
     try {
-        // Bestaat de gekozen soort?
+        
         if (empty($errors)) {
             $stmt = $conn->prepare("SELECT id FROM location_types WHERE id = :id");
             $stmt->execute(['id' => $location_type_id]);
@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
             }
         }
 
-        // Nummer moet uniek zijn (verwijderde plekken tellen niet mee)
+      
         if (empty($errors)) {
             $stmt = $conn->prepare("SELECT id FROM locations WHERE number = :number AND deleted_at IS NULL");
             $stmt->execute(['number' => $number]);
@@ -109,7 +109,7 @@ if (isset($_POST['submit'])) {
                 'size_m2' => $size_m2,
                 'has_electricity' => $has_electricity,
                 'near_water' => $near_water,
-                'photo_url' => $photo_url === '' ? null : $photo_url,
+                'photo_url' => $photo_url,
                 'max_guests' => $max_guests,
                 'price_per_night' => $price_per_night,
                 'is_active' => $is_active,
@@ -202,8 +202,8 @@ require 'header.php';
             </label>
 
             <label>
-                Foto-url (niet verplicht, bijvoorbeeld img/plekken/tent-01.jpg)
-                <input type="text" name="photo_url" maxlength="255" value="<?php echo htmlspecialchars($photo_url) ?>">
+                Foto-url (verplicht, bijvoorbeeld img/plekken/tent-01.jpg)
+                <input type="text" name="photo_url" maxlength="255" value="<?php echo htmlspecialchars($photo_url) ?>" >
             </label>
 
             <label>
@@ -224,7 +224,7 @@ require 'header.php';
             <button type="submit" name="submit">Plek aanmaken</button>
         </form>
 
-        <p class="form-note"><a href="locations.php">Terug naar alle plekken</a></p>
+        <p class="form-note"><a href="stats_locations.php">Terug naar alle plekken</a></p>
     </div>
 </main>
 

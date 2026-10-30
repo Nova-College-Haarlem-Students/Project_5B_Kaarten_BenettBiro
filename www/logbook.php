@@ -2,7 +2,7 @@
 session_start();
 require 'database.php';
 
-// Alleen ingelogde admins (role_id 3)
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -14,7 +14,7 @@ if (!in_array($_SESSION['role_id'] ?? null, [3])) {
 }
 
 try {
-    // LEFT JOIN: ook regels tonen als de gebruiker of de plek niet meer bestaat
+  
     $stmt = $conn->prepare(
         "SELECT changes.id, changes.changed_at, changes.change_type,
                 changes.old_value, changes.new_value,

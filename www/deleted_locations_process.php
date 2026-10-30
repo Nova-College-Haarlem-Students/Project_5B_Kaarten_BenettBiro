@@ -2,7 +2,7 @@
 session_start();
 require 'database.php';
 
-// Alleen ingelogde medewerkers (2) en admins (3)
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -13,7 +13,7 @@ if (!in_array($_SESSION['role_id'] ?? null, [2, 3])) {
     exit;
 }
 
-// Alleen na het indrukken van de knop (een gewone link verwijdert nooit iets)
+
 if (!isset($_POST['delete'])) {
     header('Location: index.php');
     exit;
@@ -25,7 +25,7 @@ $user_id = (int) $_SESSION['user_id'];
 try {
     $conn->beginTransaction();
 
-    // De plek moet bestaan en nog niet verwijderd zijn
+   
     $stmt = $conn->prepare("SELECT id, number FROM locations WHERE id = :id AND deleted_at IS NULL");
     $stmt->execute(['id' => $id]);
     $location = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -36,8 +36,7 @@ try {
         exit;
     }
 
-    // Soft delete: de rij blijft bestaan (reserveringen verwijzen ernaar),
-// maar de locatie wordt inactief gemaakt.
+
     $stmt = $conn->prepare(
         "UPDATE locations
      SET deleted_at = NOW(),

@@ -2,20 +2,19 @@
 session_start();
 require 'database.php';
 
-header('Content-Type: application/json');   // vertelt de browser dat we JSON teruggeven
+header('Content-Type: application/json');   
 
-// Lees de JSON body
-$input = file_get_contents('php://input');  // leest de JSON body
-$data = json_decode($input, true);          // decode de JSON body
 
-// Hulpfunctie: stuurt een melding terug naar de browser en stopt het script
+$input = file_get_contents('php://input');  
+$data = json_decode($input, true);          
+
 function stop($success, $message, $extra = [])
 {
     echo json_encode(array_merge(['success' => $success, 'message' => $message], $extra));
     exit;
 }
 
-// Alleen ingelogde gebruikers mogen reserveren
+
 if (!isset($_SESSION['user_id'])) {
     stop(false, 'Je moet ingelogd zijn om te reserveren.');
 }
@@ -24,7 +23,7 @@ if (!is_array($data) || !isset($data['location_id'])) {
     stop(false, 'Ongeldig verzoek.');
 }
 
-$user_id        = (int) $_SESSION['user_id'];   // uit de sessie, nooit uit het formulier
+$user_id        = (int) $_SESSION['user_id'];   
 $location_id    = (int) $data['location_id'];
 $arrival_date   = $data['arrival_date'] ?? '';
 $departure_date = $data['departure_date'] ?? '';
@@ -32,7 +31,7 @@ $guests         = (int) ($data['guests'] ?? 0);
 $remark         = trim($data['remark'] ?? '');
 $license_plate  = trim($data['license_plate'] ?? '');
 
-// Datums controleren
+
 $arrival   = DateTime::createFromFormat('!Y-m-d', $arrival_date);
 $departure = DateTime::createFromFormat('!Y-m-d', $departure_date);
 
@@ -58,7 +57,7 @@ $nights = $arrival->diff($departure)->days;
 try {
     $conn->beginTransaction();
 
-    // FOR UPDATE vergrendelt de plek even, zodat twee gasten niet tegelijk dezelfde dagen kunnen boeken
+    
     $stmt = $conn->prepare(
         "SELECT id, max_guests, price_per_night
          FROM locations
@@ -78,8 +77,7 @@ try {
         stop(false, 'Het aantal personen moet tussen 1 en ' . $location['max_guests'] . ' liggen.');
     }
 
-    // Is de plek in deze periode al gereserveerd?
-    // (de vertrekdag van de ene gast mag de aankomstdag van de volgende zijn)
+   
     $stmt = $conn->prepare(
         "SELECT COUNT(*) FROM reservations
          WHERE location_id = :location_id
@@ -97,7 +95,7 @@ try {
         stop(false, 'Deze plek is in die periode al gereserveerd.');
     }
 
-    // De totaalprijs bewaren we in de reservering, zodat latere prijsverhogingen niets veranderen
+  
     $total_price = round($nights * $location['price_per_night'], 2);
 
     $sql = "INSERT INTO reservations
@@ -116,14 +114,13 @@ try {
         'total_price'    => $total_price,
     ]);
 
-    // Nieuw aantal reserveringen van deze plek
+
     $stmt = $conn->prepare("SELECT COUNT(*) FROM reservations WHERE location_id = :location_id");
     $stmt->execute(['location_id' => $location_id]);
     $count = (int) $stmt->fetchColumn();
 
     $conn->commit();
 
-    // geven aan de browser dat het GELUKT is
     stop(true,
         'Gelukt! Je hebt ' . $nights . ' nacht(en) gereserveerd voor € ' . number_format($total_price, 2, ',', '.') . '.',
         ['count' => $count]
